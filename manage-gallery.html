@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Gallery | ÉLAN BOUTIQUE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.gallery-admin{display:grid;gap:25px}
+.gallery-toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.gallery-toolbar p{color:#766f73;font-size:14px}
+.gallery-admin-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.gallery-admin-card{background:#fff;border-radius:17px;overflow:hidden;box-shadow:0 10px 30px rgba(75,36,53,.07)}
+.gallery-admin-card img{width:100%;height:230px;display:block;object-fit:cover}
+.gallery-card-info{padding:18px}
+.gallery-card-info h3{font:600 20px "Playfair Display",serif;margin-bottom:7px}
+.gallery-card-info p{font-size:13px;color:#766f73;margin-bottom:14px}
+.gallery-card-actions{display:flex;gap:9px;flex-wrap:wrap}
+.gallery-action{padding:9px 15px;border-radius:22px;background:#f3d9df;color:#762f4f;text-decoration:none;font-size:12px;font-weight:700}
+.gallery-action:hover{background:#762f4f;color:white}
+.gallery-form{background:#fff;padding:28px;border-radius:18px;box-shadow:0 10px 30px rgba(75,36,53,.07);scroll-margin-top:25px}
+.gallery-form h2{font:600 27px "Playfair Display",serif;margin-bottom:8px}
+.gallery-form>p{color:#766f73;font-size:14px;margin-bottom:22px}
+.gallery-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.gallery-field{display:flex;flex-direction:column;gap:8px}
+.gallery-field.full{grid-column:1/-1}
+.gallery-field label{font-size:14px;font-weight:700}
+.gallery-field input,.gallery-field select,.gallery-field textarea{padding:14px;border:1px solid #eadbdd;border-radius:10px;background:#fffdfc;font:14px "DM Sans",sans-serif;outline:none;width:100%}
+.gallery-field input:focus,.gallery-field select:focus,.gallery-field textarea:focus{border-color:#c87591}
+.gallery-field textarea{min-height:90px;resize:vertical}
+.gallery-form-actions{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.gallery-save{background:#762f4f;color:white;border:0;padding:13px 23px;border-radius:25px;font-weight:700;cursor:pointer}
+.gallery-cancel{background:#f3d9df;color:#762f4f;text-decoration:none;padding:13px 23px;border-radius:25px;font-weight:700;font-size:14px}
+.gallery-note{color:#766f73;font-size:13px;line-height:1.7;margin-top:15px}
+.gallery-edit-list{display:grid;gap:20px}
+.gallery-edit-list .gallery-form{border:1px solid #f0e5e6}
+@media(max-width:1000px){.gallery-admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.gallery-admin-grid,.gallery-form-grid{grid-template-columns:1fr}.gallery-field.full{grid-column:auto}.gallery-form{padding:20px}.gallery-admin-card img{height:250px}}
+</style>
+</head>
+
+<body class="admin-layout">
+
+<aside class="admin-sidebar">
+    <a href="index.html" class="brand-logo admin-side-logo">
+        <span class="brand-name">ÉLAN</span>
+        <span class="brand-subtitle">BOUTIQUE</span>
+    </a>
+
+    <nav class="admin-nav">
+        <a href="admin-dashboard.html"><span>⌂</span>Dashboard</a>
+        <a href="manage-products.html"><span>▣</span>Products</a>
+        <a href="manage-orders.html"><span>▤</span>Orders</a>
+        <a href="manage-customers.html"><span>♙</span>Customers</a>
+        <a href="manage-gallery.html" class="active"><span>▧</span>Gallery</a>
+        <a href="manage-messages.html"><span>✉</span>Messages</a>
+    </nav>
+
+    <a href="index.html" class="admin-logout">← View Website</a>
+</aside>
+
+<main class="admin-main">
+
+    <div class="admin-topbar">
+        <div>
+            <p class="eyebrow">WEBSITE CONTENT</p>
+            <h1>Manage Gallery</h1>
+        </div>
+        <a href="#add-image" class="primary-btn">+ Add Image</a>
+    </div>
+
+    <div class="gallery-admin">
+
+        <section class="admin-panel">
+            <div class="gallery-toolbar">
+                <div>
+                    <h2>Gallery Collection</h2>
+                    <p>Manage the fashion photographs displayed on your website.</p>
+                </div>
+                <span class="status delivered">8 Images</span>
+            </div>
+        </section>
+
+        <section class="gallery-admin-grid">
+
+            <article class="gallery-admin-card">
+                <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=700&q=85" alt="Purple silk saree">
+                <div class="gallery-card-info">
+                    <h3>Royal Silk Saree</h3>
+                    <p>Category: Sarees</p>
+                    <div class="gallery-card-actions">
+                        <a class="gallery-action" href="#edit-image-1">Edit Image</a>
+                        <a class="gallery-action" href="#add-image">Add New</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-admin-card">
+                <img src="https://images.pexels.com/photos/38876958/pexels-photo-38876958.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Bridal lehenga">
+                <div class="gallery-card-info">
+                    <h3>Royal Bridal Lehenga</h3>
+                    <p>Category: Lehengas</p>
+                    <div class="gallery-card-actions">
+                        <a class="gallery-action" href="#edit-image-2">Edit Image</a>
+                        <a class="gallery-action" href="#add-image">Add New</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-admin-card">
+                <img src="https://images.pexels.com/photos/39873874/pexels-photo-39873874.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Evening gown">
+                <div class="gallery-card-info">
+                    <h3>Elegant Evening Gown</h3>
+                    <p>Category: Gowns</p>
+                    <div class="gallery-card-actions">
+                        <a class="gallery-action" href="#edit-image-3">Edit Image</a>
+                        <a class="gallery-action" href="#add-image">Add New</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-admin-card">
+                <img src="https://images.pexels.com/photos/28512776/pexels-photo-28512776.jpeg?auto=compress&cs=tinysrgb&w=700" alt="White chikankari kurti">
+                <div class="gallery-card-info">
+                    <h3>White Chikankari Kurti</h3>
+                    <p>Category: Kurtis</p>
+                    <div class="gallery-card-actions">
+                        <a class="gallery-action" href="#edit-image-4">Edit Image</a>
+                        <a class="gallery-action" href="#add-image">Add New</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-admin-card">
+                <img src="https://images.pexels.com/photos/29467387/pexels-photo-29467387.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Red and white traditional saree">
+                <div class="gallery-card-info">
+                    <h3>Ruby Heritage Saree</h3>
+                    <p>Category: Sarees</p>
+                    <div class="gallery-card-actions">
+                        <a class="gallery-action" href="#edit-image-5">Edit Image</a>
+                        <a class="gallery-action" href="#add-image">Add New</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-admin-card">
+                <img src="https://images.pexels.com/photos/13162240/pexels-photo-13162240.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Embroidered festive lehenga">
+                <div class="gallery-card-info">
+                    <h3>Festive Lehenga</h3>
+                    <p>Category: Lehengas</p>
+                    <div class="gallery-card-actions">
+                        <a class="gallery-action" href="#edit-image-6">Edit Image</a>
+                        <a class="gallery-action" href="#add-image">Add New</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-admin-card">
+                <img src="https://images.pexels.com/photos/34362955/pexels-photo-34362955.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Sparkling evening gown">
+                <div class="gallery-card-info">
+                    <h3>Sparkle Evening Gown</h3>
+                    <p>Category: Gowns</p>
+                    <div class="gallery-card-actions">
+                        <a class="gallery-action" href="#edit-image-7">Edit Image</a>
+                        <a class="gallery-action" href="#add-image">Add New</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="gallery-admin-card">
+                <img src="https://images.pexels.com/photos/28512787/pexels-photo-28512787.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Pistachio green chikankari kurti">
+                <div class="gallery-card-info">
+                    <h3>Pistachio Chikankari Kurti</h3>
+                    <p>Category: Kurtis</p>
+                    <div class="gallery-card-actions">
+                        <a class="gallery-action" href="#edit-image-8">Edit Image</a>
+                        <a class="gallery-action" href="#add-image">Add New</a>
+                    </div>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ADD IMAGE FORM -->
+        <section class="gallery-form" id="add-image">
+            <h2>+ Add New Gallery Image</h2>
+            <p>Enter the information for a new image.</p>
+
+            <form action="#" method="get">
+                <div class="gallery-form-grid">
+                    <div class="gallery-field">
+                        <label for="image-title">Image Title</label>
+                        <input id="image-title" type="text" placeholder="Enter image title" required>
+                    </div>
+
+                    <div class="gallery-field">
+                        <label for="image-category">Category</label>
+                        <select id="image-category" required>
+                            <option value="">Select category</option>
+                            <option>Sarees</option>
+                            <option>Lehengas</option>
+                            <option>Gowns</option>
+                            <option>Kurtis</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+
+                    <div class="gallery-field full">
+                        <label for="image-url">Image URL</label>
+                        <input id="image-url" type="url" placeholder="Paste your online image URL" required>
+                    </div>
+
+                    <div class="gallery-field full">
+                        <label for="image-description">Image Description</label>
+                        <textarea id="image-description" placeholder="Write a short description"></textarea>
+                    </div>
+                </div>
+
+                <div class="gallery-form-actions">
+                    <button type="submit" class="gallery-save">Save Image</button>
+                    <a href="manage-gallery.html" class="gallery-cancel">Cancel</a>
+                </div>
+            </form>
+
+            <p class="gallery-note">Demo form: the image details can be entered, but they will not be permanently added to the gallery without a database or connected backend.</p>
+        </section>
+
+        <!-- EDIT IMAGE FORMS -->
+        <section class="gallery-edit-list">
+
+            <div class="gallery-form" id="edit-image-1">
+                <h2>Edit Royal Silk Saree Image</h2>
+                <form action="#" method="get">
+                    <div class="gallery-form-grid">
+                        <div class="gallery-field"><label>Image Title</label><input type="text" value="Royal Silk Saree"></div>
+                        <div class="gallery-field"><label>Category</label><select><option selected>Sarees</option><option>Lehengas</option><option>Gowns</option><option>Kurtis</option></select></div>
+                        <div class="gallery-field full"><label>Image URL</label><input type="url" value="https://images.unsplash.com/photo-1610030469983-98e550d6193c"></div>
+                    </div>
+                    <div class="gallery-form-actions"><button class="gallery-save" type="submit">Save Changes</button><a class="gallery-cancel" href="manage-gallery.html">Close</a></div>
+                </form>
+            </div>
+
+            <div class="gallery-form" id="edit-image-2">
+                <h2>Edit Royal Bridal Lehenga Image</h2>
+                <form action="#" method="get">
+                    <div class="gallery-form-grid">
+                        <div class="gallery-field"><label>Image Title</label><input type="text" value="Royal Bridal Lehenga"></div>
+                        <div class="gallery-field"><label>Category</label><select><option>Sarees</option><option selected>Lehengas</option><option>Gowns</option><option>Kurtis</option></select></div>
+                        <div class="gallery-field full"><label>Image URL</label><input type="url" value="https://images.pexels.com/photos/38876958/"></div>
+                    </div>
+                    <div class="gallery-form-actions"><button class="gallery-save" type="submit">Save Changes</button><a class="gallery-cancel" href="manage-gallery.html">Close</a></div>
+                </form>
+            </div>
+
+            <div class="gallery-form" id="edit-image-3">
+                <h2>Edit Elegant Evening Gown Image</h2>
+                <form action="#" method="get">
+                    <div class="gallery-form-grid">
+                        <div class="gallery-field"><label>Image Title</label><input type="text" value="Elegant Evening Gown"></div>
+                        <div class="gallery-field"><label>Category</label><select><option>Sarees</option><option>Lehengas</option><option selected>Gowns</option><option>Kurtis</option></select></div>
+                        <div class="gallery-field full"><label>Image URL</label><input type="url" value="https://images.pexels.com/photos/39873874/"></div>
+                    </div>
+                    <div class="gallery-form-actions"><button class="gallery-save" type="submit">Save Changes</button><a class="gallery-cancel" href="manage-gallery.html">Close</a></div>
+                </form>
+            </div>
+
+            <div class="gallery-form" id="edit-image-4">
+                <h2>Edit White Chikankari Kurti Image</h2>
+                <form action="#" method="get">
+                    <div class="gallery-form-grid">
+                        <div class="gallery-field"><label>Image Title</label><input type="text" value="White Chikankari Kurti"></div>
+                        <div class="gallery-field"><label>Category</label><select><option>Sarees</option><option>Lehengas</option><option>Gowns</option><option selected>Kurtis</option></select></div>
+                        <div class="gallery-field full"><label>Image URL</label><input type="url" value="https://images.pexels.com/photos/28512776/"></div>
+                    </div>
+                    <div class="gallery-form-actions"><button class="gallery-save" type="submit">Save Changes</button><a class="gallery-cancel" href="manage-gallery.html">Close</a></div>
+                </form>
+            </div>
+
+            <div class="gallery-form" id="edit-image-5">
+                <h2>Edit Ruby Heritage Saree Image</h2>
+                <form action="#" method="get">
+                    <div class="gallery-form-grid">
+                        <div class="gallery-field"><label>Image Title</label><input type="text" value="Ruby Heritage Saree"></div>
+                        <div class="gallery-field"><label>Category</label><select><option selected>Sarees</option><option>Lehengas</option><option>Gowns</option><option>Kurtis</option></select></div>
+                        <div class="gallery-field full"><label>Image URL</label><input type="url" value="https://images.pexels.com/photos/29467387/"></div>
+                    </div>
+                    <div class="gallery-form-actions"><button class="gallery-save" type="submit">Save Changes</button><a class="gallery-cancel" href="manage-gallery.html">Close</a></div>
+                </form>
+            </div>
+
+            <div class="gallery-form" id="edit-image-6">
+                <h2>Edit Festive Lehenga Image</h2>
+                <form action="#" method="get">
+                    <div class="gallery-form-grid">
+                        <div class="gallery-field"><label>Image Title</label><input type="text" value="Festive Lehenga"></div>
+                        <div class="gallery-field"><label>Category</label><select><option>Sarees</option><option selected>Lehengas</option><option>Gowns</option><option>Kurtis</option></select></div>
+                        <div class="gallery-field full"><label>Image URL</label><input type="url" value="https://images.pexels.com/photos/13162240/"></div>
+                    </div>
+                    <div class="gallery-form-actions"><button class="gallery-save" type="submit">Save Changes</button><a class="gallery-cancel" href="manage-gallery.html">Close</a></div>
+                </form>
+            </div>
+
+            <div class="gallery-form" id="edit-image-7">
+                <h2>Edit Sparkle Evening Gown Image</h2>
+                <form action="#" method="get">
+                    <div class="gallery-form-grid">
+                        <div class="gallery-field"><label>Image Title</label><input type="text" value="Sparkle Evening Gown"></div>
+                        <div class="gallery-field"><label>Category</label><select><option>Sarees</option><option>Lehengas</option><option selected>Gowns</option><option>Kurtis</option></select></div>
+                        <div class="gallery-field full"><label>Image URL</label><input type="url" value="https://images.pexels.com/photos/34362955/"></div>
+                    </div>
+                    <div class="gallery-form-actions"><button class="gallery-save" type="submit">Save Changes</button><a class="gallery-cancel" href="manage-gallery.html">Close</a></div>
+                </form>
+            </div>
+
+            <div class="gallery-form" id="edit-image-8">
+                <h2>Edit Pistachio Chikankari Kurti Image</h2>
+                <form action="#" method="get">
+                    <div class="gallery-form-grid">
+                        <div class="gallery-field"><label>Image Title</label><input type="text" value="Pistachio Chikankari Kurti"></div>
+                        <div class="gallery-field"><label>Category</label><select><option>Sarees</option><option>Lehengas</option><option>Gowns</option><option selected>Kurtis</option></select></div>
+                        <div class="gallery-field full"><label>Image URL</label><input type="url" value="https://images.pexels.com/photos/28512787/"></div>
+                    </div>
+                    <div class="gallery-form-actions"><button class="gallery-save" type="submit">Save Changes</button><a class="gallery-cancel" href="manage-gallery.html">Close</a></div>
+                </form>
+            </div>
+
+        </section>
+
+    </div>
+</main>
+
+    <script src="app.js"></script>
+</body>
+</html>

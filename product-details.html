@@ -1,0 +1,236 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details | ÉLAN BOUTIQUE</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{--wine:#762f4f;--wine-dark:#542139;--rose:#c87591;--pink:#f3d9df;--cream:#fffaf7;--white:#fff;--dark:#282127;--gray:#766f73;--border:#eadbdd}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--dark)}
+a{color:inherit;text-decoration:none}
+.site-header{min-height:82px;padding:18px 7%;display:flex;align-items:center;justify-content:space-between;gap:25px;background:#fffdfb;border-bottom:1px solid #f0e5e6}
+.logo{font-family:"Playfair Display",serif;font-size:27px;font-weight:700;color:var(--wine);letter-spacing:1px}
+.logo small{display:block;text-align:center;font:700 9px "DM Sans",sans-serif;letter-spacing:5px}
+nav{display:flex;gap:25px;flex-wrap:wrap}
+nav a{font-size:14px;font-weight:600}
+nav a:hover{color:var(--wine)}
+.header-button,.primary-button{display:inline-block;background:var(--wine);color:white;padding:14px 24px;border-radius:30px;font-weight:700}
+main{max-width:1320px;margin:auto;padding:38px 30px 80px}
+.breadcrumb{font-size:13px;color:var(--gray);margin-bottom:35px}
+.breadcrumb a{color:var(--wine)}
+.product-panel{display:none;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:65px;align-items:start}
+.product-panel.default{display:grid}
+.product-panel:target{display:grid}
+body:has(.product-panel:target) .product-panel.default:not(:target){display:none}
+.product-photo{height:650px;overflow:hidden;border-radius:28px;background:#f0e4e4}
+.product-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.product-info{padding-top:5px}
+.category{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);font-weight:700;margin-bottom:12px}
+h1{font-family:"Playfair Display",serif;font-size:58px;line-height:1.12;margin-bottom:17px}
+.rating{color:#c89b5c;font-size:19px;margin-bottom:28px}
+.rating small{font-size:13px;color:var(--gray);margin-left:10px}
+.price{font-size:29px;color:var(--wine);font-weight:700;margin-bottom:28px}
+.description{font-size:15px;line-height:1.9;color:var(--gray);margin-bottom:32px}
+.size-title{font-size:15px;font-weight:700;margin-bottom:15px}
+.size-options{display:flex;gap:11px;flex-wrap:wrap;margin-bottom:30px}
+.size-options input{position:absolute;opacity:0;pointer-events:none}
+.size-options label{width:45px;height:45px;border:1px solid var(--border);border-radius:50%;display:grid;place-items:center;cursor:pointer;background:#fff;font-size:13px;transition:.2s}
+.size-options input:checked+label{background:var(--wine);color:#fff;border-color:var(--wine)}
+.size-options label:hover{border-color:var(--wine)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:35px}
+.primary-button{border:0;cursor:pointer;font-size:14px}
+.primary-button:hover{background:var(--wine-dark)}
+.secondary-button{display:inline-block;padding:14px 23px;border-radius:30px;border:1px solid var(--border);background:#fff;color:var(--wine);font-size:14px;font-weight:700}
+.secondary-button:hover{border-color:var(--wine)}
+.specifications{border-top:1px solid var(--border)}
+.spec-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--border);font-size:13px}
+.spec-row strong{display:block;margin-bottom:6px}
+.spec-row span{color:var(--gray)}
+.related{padding-top:85px}
+.related-heading{text-align:center;margin-bottom:35px}
+.related-heading .eyebrow{font-size:11px;letter-spacing:4px;color:var(--rose);font-weight:700;margin-bottom:10px}
+.related-heading h2{font-family:"Playfair Display",serif;font-size:45px}
+.related-heading h2 em{color:var(--wine)}
+.related-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.related-card{overflow:hidden;border-radius:22px;background:#fff;box-shadow:0 12px 35px #4b24350d}
+.related-card img{display:block;width:100%;height:320px;object-fit:cover}
+.related-card div{padding:20px}
+.related-card h3{font:600 22px "Playfair Display",serif;margin-bottom:9px}
+.related-card p{color:var(--wine);font-weight:700}
+footer{text-align:center;background:#f5e9eb;padding:30px;color:var(--gray);font-size:13px}
+@media(max-width:950px){.site-header{align-items:flex-start;flex-direction:column}.product-panel{gap:35px}.product-photo{height:540px}h1{font-size:45px}.related-card img{height:260px}}
+@media(max-width:700px){main{padding:28px 18px 55px}.product-panel{grid-template-columns:1fr;gap:28px}.product-photo{height:480px}.product-info{padding:0}h1{font-size:42px}.related{padding-top:60px}.related-heading h2{font-size:34px}.related-grid{grid-template-columns:1fr}.related-card img{height:390px}.header-button{display:none}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="index.html">ÉLAN<small>BOUTIQUE</small></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="collections.html">Collections</a>
+    <a href="custom-design.html">Custom Design</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="header-button" href="collections.html">Explore</a>
+</header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="index.html">Home</a> &nbsp;›&nbsp;
+    <a href="collections.html">Collections</a> &nbsp;›&nbsp;
+    Product Details
+  </div>
+
+  <!-- SAREE DETAILS -->
+  <section class="product-panel default" id="saree">
+    <div class="product-photo">
+      <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1100&q=90" alt="Royal purple silk saree with gold detailing">
+    </div>
+    <div class="product-info">
+      <div class="category">Sarees</div>
+      <h1>Royal Silk Saree</h1>
+      <div class="rating">★★★★★ <small>4.9 / 5</small></div>
+      <div class="price">₹4,999</div>
+      <p class="description">A timeless traditional silk saree designed for celebrations, festive occasions and elegant evenings. Its rich colour and ornate border create a graceful, classic look.</p>
+      <p class="size-title">Select Size</p>
+      <div class="size-options">
+        <input type="radio" name="size-saree" id="saree-xs"><label for="saree-xs">XS</label>
+        <input type="radio" name="size-saree" id="saree-s"><label for="saree-s">S</label>
+        <input type="radio" name="size-saree" id="saree-m" checked><label for="saree-m">M</label>
+        <input type="radio" name="size-saree" id="saree-l"><label for="saree-l">L</label>
+        <input type="radio" name="size-saree" id="saree-xl"><label for="saree-xl">XL</label>
+      </div>
+      <div class="actions">
+        <a class="primary-button" href="contact.html">Order / Enquire Now</a>
+        <a class="secondary-button" href="custom-design.html">Customise This Design</a>
+      </div>
+      <div class="specifications">
+        <div class="spec-row"><div><strong>Fabric</strong><span>Premium silk</span></div><div><strong>Work</strong><span>Decorative border</span></div></div>
+        <div class="spec-row"><div><strong>Occasion</strong><span>Festive / Wedding</span></div><div><strong>Care</strong><span>Dry clean recommended</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEHENGA DETAILS -->
+  <section class="product-panel" id="lehenga">
+    <div class="product-photo">
+      <img src="https://images.pexels.com/photos/38876958/pexels-photo-38876958.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="Royal bridal lehenga with embellished traditional styling">
+    </div>
+    <div class="product-info">
+      <div class="category">Lehengas</div>
+      <h1>Royal Bridal Lehenga</h1>
+      <div class="rating">★★★★★ <small>4.9 / 5</small></div>
+      <div class="price">₹12,999</div>
+      <p class="description">Make your special day unforgettable with a beautifully embellished bridal lehenga. Its traditional design and detailed finish are suited to weddings, receptions and grand celebrations.</p>
+      <p class="size-title">Select Size</p>
+      <div class="size-options">
+        <input type="radio" name="size-lehenga" id="lehenga-xs"><label for="lehenga-xs">XS</label>
+        <input type="radio" name="size-lehenga" id="lehenga-s"><label for="lehenga-s">S</label>
+        <input type="radio" name="size-lehenga" id="lehenga-m" checked><label for="lehenga-m">M</label>
+        <input type="radio" name="size-lehenga" id="lehenga-l"><label for="lehenga-l">L</label>
+        <input type="radio" name="size-lehenga" id="lehenga-xl"><label for="lehenga-xl">XL</label>
+      </div>
+      <div class="actions">
+        <a class="primary-button" href="contact.html">Order / Enquire Now</a>
+        <a class="secondary-button" href="custom-design.html">Customise This Design</a>
+      </div>
+      <div class="specifications">
+        <div class="spec-row"><div><strong>Fabric</strong><span>Festive fabric</span></div><div><strong>Work</strong><span>Embellished detailing</span></div></div>
+        <div class="spec-row"><div><strong>Occasion</strong><span>Wedding / Reception</span></div><div><strong>Care</strong><span>Dry clean recommended</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOWN DETAILS -->
+  <section class="product-panel" id="gown">
+    <div class="product-photo">
+      <img src="https://images.pexels.com/photos/39873874/pexels-photo-39873874.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="Elegant rose gold evening gown">
+    </div>
+    <div class="product-info">
+      <div class="category">Gowns</div>
+      <h1>Elegant Evening Gown</h1>
+      <div class="rating">★★★★★ <small>4.8 / 5</small></div>
+      <div class="price">₹7,499</div>
+      <p class="description">A sophisticated evening gown with glamorous styling for parties, formal celebrations and special occasions. A statement look designed to make your evening memorable.</p>
+      <p class="size-title">Select Size</p>
+      <div class="size-options">
+        <input type="radio" name="size-gown" id="gown-xs"><label for="gown-xs">XS</label>
+        <input type="radio" name="size-gown" id="gown-s"><label for="gown-s">S</label>
+        <input type="radio" name="size-gown" id="gown-m" checked><label for="gown-m">M</label>
+        <input type="radio" name="size-gown" id="gown-l"><label for="gown-l">L</label>
+        <input type="radio" name="size-gown" id="gown-xl"><label for="gown-xl">XL</label>
+      </div>
+      <div class="actions">
+        <a class="primary-button" href="contact.html">Order / Enquire Now</a>
+        <a class="secondary-button" href="custom-design.html">Customise This Design</a>
+      </div>
+      <div class="specifications">
+        <div class="spec-row"><div><strong>Fabric</strong><span>Evening-wear fabric</span></div><div><strong>Style</strong><span>Formal / Glamorous</span></div></div>
+        <div class="spec-row"><div><strong>Occasion</strong><span>Party / Evening</span></div><div><strong>Care</strong><span>Follow garment label</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KURTI DETAILS -->
+  <section class="product-panel" id="kurti">
+    <div class="product-photo">
+      <img src="https://images.pexels.com/photos/28512776/pexels-photo-28512776.jpeg?auto=compress&cs=tinysrgb&w=1100" alt="White chikankari embroidered kurti">
+    </div>
+    <div class="product-info">
+      <div class="category">Kurtis</div>
+      <h1>White Chikankari Kurti</h1>
+      <div class="rating">★★★★★ <small>4.8 / 5</small></div>
+      <div class="price">₹2,499</div>
+      <p class="description">A graceful white chikankari kurti featuring delicate embroidery and an elegant traditional look. A versatile choice for casual outings, family gatherings and daytime occasions.</p>
+      <p class="size-title">Select Size</p>
+      <div class="size-options">
+        <input type="radio" name="size-kurti" id="kurti-xs"><label for="kurti-xs">XS</label>
+        <input type="radio" name="size-kurti" id="kurti-s"><label for="kurti-s">S</label>
+        <input type="radio" name="size-kurti" id="kurti-m" checked><label for="kurti-m">M</label>
+        <input type="radio" name="size-kurti" id="kurti-l"><label for="kurti-l">L</label>
+        <input type="radio" name="size-kurti" id="kurti-xl"><label for="kurti-xl">XL</label>
+      </div>
+      <div class="actions">
+        <a class="primary-button" href="contact.html">Order / Enquire Now</a>
+        <a class="secondary-button" href="custom-design.html">Customise This Design</a>
+      </div>
+      <div class="specifications">
+        <div class="spec-row"><div><strong>Fabric</strong><span>Lightweight fabric</span></div><div><strong>Work</strong><span>Chikankari embroidery</span></div></div>
+        <div class="spec-row"><div><strong>Occasion</strong><span>Casual / Festive</span></div><div><strong>Care</strong><span>Gentle wash recommended</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="related">
+    <div class="related-heading">
+      <div class="eyebrow">YOU MAY ALSO LIKE</div>
+      <h2>More <em>ÉLAN</em> Styles</h2>
+    </div>
+    <div class="related-grid">
+      <a class="related-card" href="product-details.html#gown">
+        <img src="https://images.pexels.com/photos/39873874/pexels-photo-39873874.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Elegant evening gown">
+        <div><h3>Elegant Evening Gown</h3><p>₹7,499</p></div>
+      </a>
+      <a class="related-card" href="product-details.html#kurti">
+        <img src="https://images.pexels.com/photos/28512776/pexels-photo-28512776.jpeg?auto=compress&cs=tinysrgb&w=800" alt="White chikankari kurti">
+        <div><h3>White Chikankari Kurti</h3><p>₹2,499</p></div>
+      </a>
+      <a class="related-card" href="product-details.html#lehenga">
+        <img src="https://images.pexels.com/photos/38876958/pexels-photo-38876958.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Traditional bridal lehenga">
+        <div><h3>Royal Bridal Lehenga</h3><p>₹12,999</p></div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 ÉLAN BOUTIQUE · Designed with elegance.</footer>
+    <script src="app.js"></script>
+</body>
+</html>

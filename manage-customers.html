@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Customers | ÉLAN BOUTIQUE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-layout">
+
+<aside class="admin-sidebar">
+
+    <a href="index.html" class="brand-logo admin-side-logo">
+        <span class="brand-name">ÉLAN</span>
+        <span class="brand-subtitle">BOUTIQUE</span>
+    </a>
+
+    <nav class="admin-nav">
+        <a href="admin-dashboard.html"><span>⌂</span>Dashboard</a>
+        <a href="manage-products.html"><span>▣</span>Products</a>
+        <a href="manage-orders.html"><span>▤</span>Orders</a>
+        <a href="manage-customers.html" class="active"><span>♙</span>Customers</a>
+        <a href="manage-gallery.html"><span>▧</span>Gallery</a>
+        <a href="manage-messages.html"><span>✉</span>Messages</a>
+    </nav>
+
+    <a href="index.html" class="admin-logout">← View Website</a>
+
+</aside>
+
+
+<main class="admin-main">
+
+    <div class="admin-topbar">
+
+        <div>
+            <p class="eyebrow">CUSTOMER MANAGEMENT</p>
+            <h1>Customers</h1>
+        </div>
+
+        <span class="design-count">486 Customers</span>
+
+    </div>
+
+
+    <div class="admin-panel">
+
+        <div class="filter-bar">
+            <input type="search" placeholder="Search customer...">
+        </div>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Orders</th>
+                        <th>Total Spent</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td><strong>Ananya Rao</strong></td>
+                        <td>ananya@email.com</td>
+                        <td>98765 43210</td>
+                        <td>8</td>
+                        <td>₹38,450</td>
+                        <td><span class="status delivered">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Priya Sharma</strong></td>
+                        <td>priya@email.com</td>
+                        <td>98765 12345</td>
+                        <td>5</td>
+                        <td>₹27,999</td>
+                        <td><span class="status delivered">Active</span></td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Meera Patel</strong></td>
+                        <td>meera@email.com</td>
+                        <td>99887 66554</td>
+                        <td>3</td>
+                        <td>₹15,200</td>
+                        <td><span class="status delivered">Active</span></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</main>
+
+    <script src="app.js"></script>
+</body>
+</html>

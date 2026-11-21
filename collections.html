@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collections | ÉLAN BOUTIQUE</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{--wine:#762f4f;--wine-dark:#542139;--rose:#c87591;--pink:#f3d9df;--cream:#fffaf7;--dark:#282127;--gray:#766f73;--border:#eadbdd}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"DM Sans",sans-serif;background:var(--cream);color:var(--dark)}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.site-header{height:82px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:#fffdfb;border-bottom:1px solid #f0e5e6;gap:25px}
+.logo{font-family:"Playfair Display",serif;font-size:27px;font-weight:700;color:var(--wine);letter-spacing:1px}
+.logo small{display:block;font:700 9px "DM Sans",sans-serif;letter-spacing:5px;text-align:center}
+nav{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+nav a{font-size:14px;font-weight:600}
+nav a:hover,nav a.active{color:var(--wine)}
+.header-button,.primary-button{display:inline-block;background:var(--wine);color:white;padding:14px 24px;border-radius:30px;font-weight:700}
+main{max-width:1320px;margin:auto;padding:75px 30px}
+.section-kicker{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--rose);font-weight:700;margin-bottom:10px}
+.heading-row{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:30px}
+h1,h2,h3{font-family:"Playfair Display",serif}
+h1{font-size:54px;line-height:1.1}
+.heading-row p{color:var(--gray);padding-bottom:7px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0}
+.filters input{position:absolute;opacity:0;pointer-events:none}
+.filters label{padding:11px 21px;border:1px solid var(--border);border-radius:30px;cursor:pointer;background:#fff;font-size:14px;font-weight:600;transition:.2s}
+#all:checked~.filters label[for="all"],
+#sarees:checked~.filters label[for="sarees"],
+#lehengas:checked~.filters label[for="lehengas"],
+#gowns:checked~.filters label[for="gowns"],
+#kurtis:checked~.filters label[for="kurtis"]{background:var(--wine);color:#fff;border-color:var(--wine)}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:25px}
+.product-card{min-width:0;background:#fff;border-radius:23px;overflow:hidden;box-shadow:0 12px 35px #4b24350d;transition:transform .25s,box-shadow .25s}
+.product-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px #4b24351a}
+.product-image{height:390px;position:relative;background:#f3e9e9;overflow:hidden}
+.product-image img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .4s}
+.product-card:hover .product-image img{transform:scale(1.035)}
+.tag{position:absolute;top:16px;left:16px;background:var(--wine);color:#fff;border-radius:30px;padding:8px 13px;font-size:10px;font-weight:700}
+.heart-toggle{position:absolute;right:15px;top:15px;width:43px;height:43px;display:grid;place-items:center;border-radius:50%;background:white;color:var(--wine);font-size:23px;cursor:pointer;box-shadow:0 4px 15px #0000000c}
+.heart-check{position:absolute;opacity:0;pointer-events:none}
+.heart-check:checked+.heart-toggle{background:var(--wine);color:white}
+.heart-check:checked+.heart-toggle span{font-size:0}
+.heart-check:checked+.heart-toggle span:after{content:"♥";font-size:22px}
+.card-body{padding:22px 23px 24px}
+.category{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--rose);font-weight:700;margin-bottom:8px}
+.card-body h2{font-size:23px;line-height:1.25;margin-bottom:9px}
+.card-body p{font-size:14px;color:var(--gray);line-height:1.7;min-height:48px}
+.card-bottom{border-top:1px solid #f0e4e5;margin-top:17px;padding-top:17px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.price{font-weight:700;font-size:19px;color:var(--wine)}
+.details-link{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--pink);color:var(--wine);font-weight:700}
+.details-link:hover{background:var(--wine);color:#fff}
+#sarees:checked~.product-grid .product-card:not(.saree),
+#lehengas:checked~.product-grid .product-card:not(.lehenga),
+#gowns:checked~.product-grid .product-card:not(.gown),
+#kurtis:checked~.product-grid .product-card:not(.kurti){display:none}
+footer{padding:30px;text-align:center;background:#f5e9eb;color:var(--gray);font-size:13px}
+@media(max-width:1050px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.product-image{height:420px}.heading-row{align-items:start;flex-direction:column}nav{gap:14px}}
+@media(max-width:650px){.site-header{height:auto;padding:20px;align-items:flex-start;flex-direction:column}.site-header nav{gap:14px}.header-button{display:none}main{padding:45px 18px}h1{font-size:40px}.product-grid{grid-template-columns:1fr}.product-image{height:440px}.card-body h2{font-size:24px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="logo" href="index.html">ÉLAN<small>BOUTIQUE</small></a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a class="active" href="collections.html">Collections</a>
+    <a href="custom-design.html">Custom Design</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <a class="header-button" href="contact.html">Explore</a>
+</header>
+
+<main>
+  <div class="heading-row">
+    <div>
+      <div class="section-kicker">Our Collection</div>
+      <h1>Signature Styles</h1>
+    </div>
+    <p>Elegant pieces created for celebrations, weddings and unforgettable moments.</p>
+  </div>
+
+  <section class="catalog">
+    <input type="radio" name="category" id="all" checked>
+    <input type="radio" name="category" id="sarees">
+    <input type="radio" name="category" id="lehengas">
+    <input type="radio" name="category" id="gowns">
+    <input type="radio" name="category" id="kurtis">
+
+    <div class="filters">
+      <label for="all">All Collections</label>
+      <label for="sarees">Sarees</label>
+      <label for="lehengas">Lehengas</label>
+      <label for="gowns">Gowns</label>
+      <label for="kurtis">Kurtis</label>
+    </div>
+
+    <div class="product-grid">
+
+      <article class="product-card saree">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=900&q=85" alt="Purple traditional silk saree with gold border">
+          <span class="tag">FEATURED</span>
+          <input class="heart-check" type="checkbox" id="heart-saree">
+          <label class="heart-toggle" for="heart-saree" aria-label="Add Royal Silk Saree to favourites"><span>♡</span></label>
+        </div>
+        <div class="card-body">
+          <div class="category">Sarees</div>
+          <h2>Royal Silk Saree</h2>
+          <p>Rich traditional silk styling with an elegant gold border.</p>
+          <div class="card-bottom"><span class="price">₹4,999</span><a class="details-link" href="product-details.html#saree" aria-label="View Royal Silk Saree details">→</a></div>
+        </div>
+      </article>
+
+      <article class="product-card lehenga">
+        <div class="product-image">
+          <img src="https://images.pexels.com/photos/38876958/pexels-photo-38876958.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Model wearing an embellished Indian bridal lehenga">
+          <span class="tag">NEW</span>
+          <input class="heart-check" type="checkbox" id="heart-lehenga">
+          <label class="heart-toggle" for="heart-lehenga" aria-label="Add Royal Bridal Lehenga to favourites"><span>♡</span></label>
+        </div>
+        <div class="card-body">
+          <div class="category">Lehengas</div>
+          <h2>Royal Bridal Lehenga</h2>
+          <p>Embellished bridal wear for weddings and grand celebrations.</p>
+          <div class="card-bottom"><span class="price">₹12,999</span><a class="details-link" href="product-details.html#lehenga" aria-label="View Royal Bridal Lehenga details">→</a></div>
+        </div>
+      </article>
+
+      <article class="product-card gown">
+        <div class="product-image">
+          <img src="https://images.pexels.com/photos/39873874/pexels-photo-39873874.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Elegant rose gold evening gown">
+          <input class="heart-check" type="checkbox" id="heart-gown">
+          <label class="heart-toggle" for="heart-gown" aria-label="Add Elegant Evening Gown to favourites"><span>♡</span></label>
+        </div>
+        <div class="card-body">
+          <div class="category">Gowns</div>
+          <h2>Elegant Evening Gown</h2>
+          <p>A glamorous evening gown for parties and special occasions.</p>
+          <div class="card-bottom"><span class="price">₹7,499</span><a class="details-link" href="product-details.html#gown" aria-label="View Elegant Evening Gown details">→</a></div>
+        </div>
+      </article>
+
+      <article class="product-card kurti">
+        <div class="product-image">
+          <img src="https://images.pexels.com/photos/28512776/pexels-photo-28512776.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Woman wearing a white chikankari kurti">
+          <input class="heart-check" type="checkbox" id="heart-kurti">
+          <label class="heart-toggle" for="heart-kurti" aria-label="Add White Chikankari Kurti to favourites"><span>♡</span></label>
+        </div>
+        <div class="card-body">
+          <div class="category">Kurtis</div>
+          <h2>White Chikankari Kurti</h2>
+          <p>Graceful white embroidered traditional wear for everyday elegance.</p>
+          <div class="card-bottom"><span class="price">₹2,499</span><a class="details-link" href="product-details.html#kurti" aria-label="View White Chikankari Kurti details">→</a></div>
+        </div>
+      </article>
+
+      <article class="product-card saree">
+        <div class="product-image">
+          <img src="https://images.pexels.com/photos/29467387/pexels-photo-29467387.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Woman in a traditional red and white saree">
+          <input class="heart-check" type="checkbox" id="heart-ruby">
+          <label class="heart-toggle" for="heart-ruby" aria-label="Add Ruby Heritage Saree to favourites"><span>♡</span></label>
+        </div>
+        <div class="card-body">
+          <div class="category">Sarees</div>
+          <h2>Ruby Heritage Saree</h2>
+          <p>Classic red-and-white traditional styling for festive occasions.</p>
+          <div class="card-bottom"><span class="price">₹5,499</span><a class="details-link" href="product-details.html#saree" aria-label="View saree details">→</a></div>
+        </div>
+      </article>
+
+      <article class="product-card lehenga">
+        <div class="product-image">
+          <img src="https://images.pexels.com/photos/13162240/pexels-photo-13162240.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Woman wearing an embroidered traditional lehenga">
+          <input class="heart-check" type="checkbox" id="heart-festive">
+          <label class="heart-toggle" for="heart-festive" aria-label="Add Embroidered Festive Lehenga to favourites"><span>♡</span></label>
+        </div>
+        <div class="card-body">
+          <div class="category">Lehengas</div>
+          <h2>Embroidered Festive Lehenga</h2>
+          <p>Detailed traditional embroidery for memorable celebrations.</p>
+          <div class="card-bottom"><span class="price">₹10,999</span><a class="details-link" href="product-details.html#lehenga" aria-label="View lehenga details">→</a></div>
+        </div>
+      </article>
+
+      <article class="product-card gown">
+        <div class="product-image">
+          <img src="https://images.pexels.com/photos/34362955/pexels-photo-34362955.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Woman in a sparkling formal evening gown">
+          <input class="heart-check" type="checkbox" id="heart-sparkle">
+          <label class="heart-toggle" for="heart-sparkle" aria-label="Add Sparkle Evening Gown to favourites"><span>♡</span></label>
+        </div>
+        <div class="card-body">
+          <div class="category">Gowns</div>
+          <h2>Sparkle Evening Gown</h2>
+          <p>Elegant occasion wear with a sophisticated evening look.</p>
+          <div class="card-bottom"><span class="price">₹8,499</span><a class="details-link" href="product-details.html#gown" aria-label="View gown details">→</a></div>
+        </div>
+      </article>
+
+      <article class="product-card kurti">
+        <div class="product-image">
+          <img src="https://images.pexels.com/photos/28512787/pexels-photo-28512787.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Woman wearing a pistachio green chikankari kurti">
+          <input class="heart-check" type="checkbox" id="heart-pistachio">
+          <label class="heart-toggle" for="heart-pistachio" aria-label="Add Pistachio Chikankari Kurti to favourites"><span>♡</span></label>
+        </div>
+        <div class="card-body">
+          <div class="category">Kurtis</div>
+          <h2>Pistachio Chikankari Kurti</h2>
+          <p>Soft green traditional embroidery with a light, graceful finish.</p>
+          <div class="card-bottom"><span class="price">₹2,799</span><a class="details-link" href="product-details.html#kurti" aria-label="View kurti details">→</a></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 ÉLAN BOUTIQUE · Designed with elegance.</footer>
+    <script src="app.js"></script>
+</body>
+</html>

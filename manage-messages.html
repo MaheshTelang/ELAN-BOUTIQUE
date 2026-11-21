@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messages | ÉLAN BOUTIQUE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.messages-page{display:grid;gap:24px}
+.message-list{display:grid;gap:16px}
+.message-card{display:flex;align-items:center;gap:18px;background:#fff;border-radius:16px;padding:22px;box-shadow:0 8px 25px rgba(75,36,53,.06);border:1px solid #f1e6e8}
+.message-card.unread{border-left:4px solid #c87591}
+.message-avatar{width:52px;height:52px;min-width:52px;border-radius:50%;display:grid;place-items:center;background:#f3d9df;color:#762f4f;font-weight:700}
+.message-content{flex:1;min-width:0}
+.message-top{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:7px}
+.message-top strong{font-size:15px}
+.message-top span{font-size:12px;color:#766f73}
+.message-content h3{font:600 19px "Playfair Display",serif;margin-bottom:5px}
+.message-content p{font-size:13px;color:#766f73;line-height:1.6}
+.message-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.message-action{display:inline-block;padding:9px 16px;background:#f3d9df;color:#762f4f;border-radius:25px;text-decoration:none;font-size:12px;font-weight:700}
+.message-action:hover{background:#762f4f;color:#fff}
+.message-details{background:#fff;border-radius:18px;padding:28px;box-shadow:0 8px 25px rgba(75,36,53,.06);border:1px solid #f1e6e8;scroll-margin-top:25px}
+.message-details h2{font:600 27px "Playfair Display",serif;margin-bottom:20px}
+.message-details dl{display:grid;grid-template-columns:130px 1fr;gap:14px;font-size:14px;margin-bottom:20px}
+.message-details dt{font-weight:700;color:#282127}
+.message-details dd{color:#766f73;overflow-wrap:anywhere}
+.message-body{background:#fffaf7;border:1px solid #eadbdd;border-radius:13px;padding:20px;line-height:1.8;color:#51484d;font-size:14px;margin:18px 0 22px}
+.message-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.reply-button,.back-button{display:inline-block;padding:13px 22px;border-radius:28px;font-size:13px;font-weight:700;text-decoration:none}
+.reply-button{background:#762f4f;color:white}
+.reply-button:hover{background:#542139}
+.back-button{background:#f3d9df;color:#762f4f}
+.message-note{font-size:13px;color:#766f73;line-height:1.7;margin-top:12px}
+@media(max-width:650px){.message-card{align-items:flex-start;flex-wrap:wrap;padding:17px}.message-actions{width:100%;padding-left:70px}.message-details{padding:20px}.message-details dl{grid-template-columns:1fr;gap:5px}.message-details dd{margin-bottom:10px}}
+</style>
+</head>
+
+<body class="admin-layout">
+
+<aside class="admin-sidebar">
+    <a href="index.html" class="brand-logo admin-side-logo">
+        <span class="brand-name">ÉLAN</span>
+        <span class="brand-subtitle">BOUTIQUE</span>
+    </a>
+
+    <nav class="admin-nav">
+        <a href="admin-dashboard.html"><span>⌂</span>Dashboard</a>
+        <a href="manage-products.html"><span>▣</span>Products</a>
+        <a href="manage-orders.html"><span>▤</span>Orders</a>
+        <a href="manage-customers.html"><span>♙</span>Customers</a>
+        <a href="manage-gallery.html"><span>▧</span>Gallery</a>
+        <a href="manage-messages.html" class="active"><span>✉</span>Messages</a>
+    </nav>
+
+    <a href="index.html" class="admin-logout">← View Website</a>
+</aside>
+
+<main class="admin-main">
+
+    <div class="admin-topbar">
+        <div>
+            <p class="eyebrow">CUSTOMER COMMUNICATION</p>
+            <h1>Messages</h1>
+        </div>
+        <span class="design-count">3 Sample Messages</span>
+    </div>
+
+    <div class="messages-page">
+
+        <!-- MESSAGE LIST -->
+        <section class="message-list">
+
+            <article class="message-card unread">
+                <div class="message-avatar">AR</div>
+                <div class="message-content">
+                    <div class="message-top">
+                        <strong>Ananya Rao</strong>
+                        <span>Today, 11:30 AM</span>
+                    </div>
+                    <h3>Custom Wedding Order</h3>
+                    <p>I would like to discuss a custom lehenga for my wedding next month...</p>
+                </div>
+                <div class="message-actions">
+                    <a href="#message-ananya" class="message-action">Open Message</a>
+                </div>
+            </article>
+
+            <article class="message-card">
+                <div class="message-avatar">PS</div>
+                <div class="message-content">
+                    <div class="message-top">
+                        <strong>Priya Sharma</strong>
+                        <span>Yesterday</span>
+                    </div>
+                    <h3>Product Enquiry</h3>
+                    <p>Is the Rose Bridal Lehenga available in a different colour?</p>
+                </div>
+                <div class="message-actions">
+                    <a href="#message-priya" class="message-action">Open Message</a>
+                </div>
+            </article>
+
+            <article class="message-card">
+                <div class="message-avatar">MP</div>
+                <div class="message-content">
+                    <div class="message-top">
+                        <strong>Meera Patel</strong>
+                        <span>28 September</span>
+                    </div>
+                    <h3>Order Question</h3>
+                    <p>Can I change my size after placing the order?</p>
+                </div>
+                <div class="message-actions">
+                    <a href="#message-meera" class="message-action">Open Message</a>
+                </div>
+            </article>
+
+        </section>
+
+        <!-- ANANYA MESSAGE DETAILS -->
+        <section class="message-details" id="message-ananya">
+            <h2>Custom Wedding Order</h2>
+            <dl>
+                <dt>Customer</dt>
+                <dd>Ananya Rao</dd>
+
+                <dt>Email</dt>
+                <dd>ananya@email.com</dd>
+
+                <dt>Received</dt>
+                <dd>Today, 11:30 AM</dd>
+
+                <dt>Subject</dt>
+                <dd>Custom Wedding Order</dd>
+            </dl>
+
+            <div class="message-body">
+                Hello ÉLAN Boutique,<br><br>
+                I would like to discuss a custom lehenga for my wedding next month. I would like to know about the available designs, colours and customization options.<br><br>
+                Please contact me with more details.<br><br>
+                Thank you,<br>
+                Ananya Rao
+            </div>
+
+            <div class="message-buttons">
+                <a class="reply-button" href="mailto:ananya@email.com?subject=Re:%20Custom%20Wedding%20Order">Reply by Email →</a>
+                <a class="back-button" href="manage-messages.html">Back to Messages</a>
+            </div>
+        </section>
+
+        <!-- PRIYA MESSAGE DETAILS -->
+        <section class="message-details" id="message-priya">
+            <h2>Product Enquiry</h2>
+            <dl>
+                <dt>Customer</dt>
+                <dd>Priya Sharma</dd>
+
+                <dt>Email</dt>
+                <dd>priya@email.com</dd>
+
+                <dt>Received</dt>
+                <dd>Yesterday</dd>
+
+                <dt>Subject</dt>
+                <dd>Product Enquiry</dd>
+            </dl>
+
+            <div class="message-body">
+                Hello,<br><br>
+                I saw the Rose Bridal Lehenga on your boutique website. Is this design available in a different colour? I would also like to know whether it can be customized.<br><br>
+                Please share the details.<br><br>
+                Regards,<br>
+                Priya Sharma
+            </div>
+
+            <div class="message-buttons">
+                <a class="reply-button" href="mailto:priya@email.com?subject=Re:%20Product%20Enquiry">Reply by Email →</a>
+                <a class="back-button" href="manage-messages.html">Back to Messages</a>
+            </div>
+        </section>
+
+        <!-- MEERA MESSAGE DETAILS -->
+        <section class="message-details" id="message-meera">
+            <h2>Order Question</h2>
+            <dl>
+                <dt>Customer</dt>
+                <dd>Meera Patel</dd>
+
+                <dt>Email</dt>
+                <dd>meera@email.com</dd>
+
+                <dt>Received</dt>
+                <dd>28 September</dd>
+
+                <dt>Subject</dt>
+                <dd>Order Question</dd>
+            </dl>
+
+            <div class="message-body">
+                Hello ÉLAN Boutique,<br><br>
+                I have already placed an order, but I want to know whether it is possible to change my selected size. Please let me know how I can make this change.<br><br>
+                Thank you,<br>
+                Meera Patel
+            </div>
+
+            <div class="message-buttons">
+                <a class="reply-button" href="mailto:meera@email.com?subject=Re:%20Order%20Question">Reply by Email →</a>
+                <a class="back-button" href="manage-messages.html">Back to Messages</a>
+            </div>
+        </section>
+
+        <p class="message-note">
+            Note: These are sample messages for your project demonstration. Reply by Email opens the email application on your computer. Actual customer messages require a connected contact form and backend.
+        </p>
+
+    </div>
+
+</main>
+    <script src="app.js"></script>
+</body>
+</html>

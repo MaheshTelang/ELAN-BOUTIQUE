@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | ÉLAN BOUTIQUE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-layout">
+
+<aside class="admin-sidebar">
+
+    <a href="index.html" class="brand-logo admin-side-logo">
+        <span class="brand-name">ÉLAN</span>
+        <span class="brand-subtitle">BOUTIQUE</span>
+    </a>
+
+    <nav class="admin-nav">
+
+        <a href="admin-dashboard.html" class="active">
+            <span>⌂</span>
+            Dashboard
+        </a>
+
+        <a href="manage-products.html">
+            <span>▣</span>
+            Products
+        </a>
+
+        <a href="manage-orders.html">
+            <span>▤</span>
+            Orders
+        </a>
+
+        <a href="manage-customers.html">
+            <span>♙</span>
+            Customers
+        </a>
+
+        <a href="manage-gallery.html">
+            <span>▧</span>
+            Gallery
+        </a>
+
+        <a href="manage-messages.html">
+            <span>✉</span>
+            Messages
+        </a>
+
+    </nav>
+
+    <a href="index.html" class="admin-logout">
+        ← View Website
+    </a>
+
+</aside>
+
+
+<main class="admin-main">
+
+    <div class="admin-topbar">
+
+        <div>
+            <p class="eyebrow">ADMIN PANEL</p>
+            <h1>Dashboard</h1>
+        </div>
+
+        <div class="admin-user">
+            <span>👤</span>
+            <div>
+                <strong>Admin</strong>
+                <small>Administrator</small>
+            </div>
+        </div>
+
+    </div>
+
+
+    <section class="dashboard-stats">
+
+        <div class="stat-card">
+            <span class="stat-icon">₹</span>
+            <div>
+                <small>Total Sales</small>
+                <strong>₹2,48,500</strong>
+                <em>+12.5%</em>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">▤</span>
+            <div>
+                <small>Orders</small>
+                <strong>128</strong>
+                <em>+8.2%</em>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">♙</span>
+            <div>
+                <small>Customers</small>
+                <strong>486</strong>
+                <em>+15.4%</em>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <span class="stat-icon">✦</span>
+            <div>
+                <small>Products</small>
+                <strong>72</strong>
+                <em>+5 new</em>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="admin-content-grid">
+
+        <div class="admin-panel">
+
+            <div class="panel-heading">
+                <h2>Recent Orders</h2>
+                <a href="manage-orders.html">View All</a>
+            </div>
+
+            <div class="table-wrap">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Order</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>#EL1024</td>
+                            <td>Ananya Rao</td>
+                            <td>Royal Silk Saree</td>
+                            <td>₹4,999</td>
+                            <td><span class="status delivered">Delivered</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>#EL1023</td>
+                            <td>Priya Sharma</td>
+                            <td>Rose Bridal Lehenga</td>
+                            <td>₹12,999</td>
+                            <td><span class="status processing">Processing</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>#EL1022</td>
+                            <td>Meera Patel</td>
+                            <td>Evening Gown</td>
+                            <td>₹7,499</td>
+                            <td><span class="status pending">Pending</span></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-panel">
+
+            <div class="panel-heading">
+                <h2>Quick Actions</h2>
+            </div>
+
+            <div class="quick-actions">
+
+                <a href="manage-products.html">
+                    <span>+</span>
+                    Add Product
+                </a>
+
+                <a href="manage-orders.html">
+                    <span>▤</span>
+                    Manage Orders
+                </a>
+
+                <a href="manage-gallery.html">
+                    <span>▧</span>
+                    Update Gallery
+                </a>
+
+                <a href="manage-messages.html">
+                    <span>✉</span>
+                    View Messages
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+    <script src="app.js"></script>
+</body>
+</html>

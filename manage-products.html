@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Products | ÉLAN BOUTIQUE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.product-admin-content{display:grid;gap:25px}
+.product-admin-content .admin-panel{padding:25px}
+.product-admin-content .primary-btn{border:0;cursor:pointer}
+.admin-form-panel{background:#fff;border-radius:18px;padding:28px;margin-top:25px;box-shadow:0 10px 30px rgba(75,36,53,.07);scroll-margin-top:25px}
+.admin-form-panel h2{font-family:"Playfair Display",serif;font-size:27px;margin-bottom:8px;color:#282127}
+.form-description{color:#766f73;font-size:14px;margin-bottom:24px}
+.product-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.product-field{display:flex;flex-direction:column;gap:8px}
+.product-field.full{grid-column:1/-1}
+.product-field label{font-weight:700;font-size:14px}
+.product-field input,.product-field select,.product-field textarea{width:100%;padding:14px 15px;border:1px solid #eadbdd;border-radius:10px;font:14px "DM Sans",sans-serif;background:#fffdfc;outline:none}
+.product-field input:focus,.product-field select:focus,.product-field textarea:focus{border-color:#c87591}
+.product-field textarea{min-height:100px;resize:vertical}
+.form-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.form-actions button,.form-actions a{padding:13px 22px;border-radius:30px;font-weight:700;font-size:14px;text-decoration:none}
+.save-button{background:#762f4f;color:white;border:0;cursor:pointer}
+.cancel-button{background:#f3d9df;color:#762f4f}
+.product-edit-section{display:grid;gap:18px}
+.product-edit-section .admin-form-panel{border:1px solid #f0e5e6}
+.product-image-preview{width:65px;height:65px;object-fit:cover;border-radius:10px;vertical-align:middle;margin-right:10px}
+.product-table-name{display:flex;align-items:center;min-width:190px}
+.product-table-name strong{font-size:14px}
+.table-action{display:inline-block;padding:8px 14px;background:#f3d9df;color:#762f4f;border-radius:20px;text-decoration:none;font-size:12px;font-weight:700}
+.product-note{font-size:13px;color:#766f73;line-height:1.7;margin-top:15px}
+@media(max-width:650px){.product-form-grid{grid-template-columns:1fr}.product-field.full{grid-column:auto}.admin-form-panel{padding:20px}.product-admin-content .admin-panel{padding:15px}}
+</style>
+</head>
+
+<body class="admin-layout">
+
+<aside class="admin-sidebar">
+    <a href="index.html" class="brand-logo admin-side-logo">
+        <span class="brand-name">ÉLAN</span>
+        <span class="brand-subtitle">BOUTIQUE</span>
+    </a>
+
+    <nav class="admin-nav">
+        <a href="admin-dashboard.html"><span>⌂</span>Dashboard</a>
+        <a href="manage-products.html" class="active"><span>▣</span>Products</a>
+        <a href="manage-orders.html"><span>▤</span>Orders</a>
+        <a href="manage-customers.html"><span>♙</span>Customers</a>
+        <a href="manage-gallery.html"><span>▧</span>Gallery</a>
+        <a href="manage-messages.html"><span>✉</span>Messages</a>
+    </nav>
+
+    <a href="index.html" class="admin-logout">← View Website</a>
+</aside>
+
+<main class="admin-main">
+
+    <div class="admin-topbar">
+        <div>
+            <p class="eyebrow">CATALOGUE</p>
+            <h1>Manage Products</h1>
+        </div>
+        <a href="#add-product" class="primary-btn">+ Add Product</a>
+    </div>
+
+    <div class="product-admin-content">
+
+        <section class="admin-panel">
+            <div class="filter-bar">
+                <input type="search" placeholder="Search products...">
+                <select>
+                    <option>All Categories</option>
+                    <option>Sarees</option>
+                    <option>Lehengas</option>
+                    <option>Gowns</option>
+                    <option>Kurtis</option>
+                </select>
+            </div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><div class="product-table-name">
+                                <img class="product-image-preview" src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=150&q=80" alt="">
+                                <strong>Royal Silk Saree</strong>
+                            </div></td>
+                            <td>Sarees</td><td>₹4,999</td><td>12</td>
+                            <td><span class="status delivered">Active</span></td>
+                            <td><a href="#edit-saree" class="table-action">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td><div class="product-table-name">
+                                <img class="product-image-preview" src="https://images.pexels.com/photos/38876958/pexels-photo-38876958.jpeg?auto=compress&cs=tinysrgb&w=150" alt="">
+                                <strong>Royal Bridal Lehenga</strong>
+                            </div></td>
+                            <td>Lehengas</td><td>₹12,999</td><td>6</td>
+                            <td><span class="status delivered">Active</span></td>
+                            <td><a href="#edit-lehenga" class="table-action">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td><div class="product-table-name">
+                                <img class="product-image-preview" src="https://images.pexels.com/photos/39873874/pexels-photo-39873874.jpeg?auto=compress&cs=tinysrgb&w=150" alt="">
+                                <strong>Elegant Evening Gown</strong>
+                            </div></td>
+                            <td>Gowns</td><td>₹7,499</td><td>8</td>
+                            <td><span class="status delivered">Active</span></td>
+                            <td><a href="#edit-gown" class="table-action">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td><div class="product-table-name">
+                                <img class="product-image-preview" src="https://images.pexels.com/photos/28512776/pexels-photo-28512776.jpeg?auto=compress&cs=tinysrgb&w=150" alt="">
+                                <strong>White Chikankari Kurti</strong>
+                            </div></td>
+                            <td>Kurtis</td><td>₹2,499</td><td>25</td>
+                            <td><span class="status delivered">Active</span></td>
+                            <td><a href="#edit-kurti" class="table-action">Edit</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ADD PRODUCT FORM -->
+        <section class="admin-form-panel" id="add-product">
+            <h2>+ Add New Product</h2>
+            <p class="form-description">Enter the details of the new boutique product.</p>
+
+            <form action="#" method="get">
+                <div class="product-form-grid">
+                    <div class="product-field">
+                        <label for="new-name">Product Name</label>
+                        <input id="new-name" type="text" placeholder="Enter product name" required>
+                    </div>
+                    <div class="product-field">
+                        <label for="new-category">Category</label>
+                        <select id="new-category" required>
+                            <option value="">Select category</option>
+                            <option>Sarees</option>
+                            <option>Lehengas</option>
+                            <option>Gowns</option>
+                            <option>Kurtis</option>
+                        </select>
+                    </div>
+                    <div class="product-field">
+                        <label for="new-price">Price (₹)</label>
+                        <input id="new-price" type="number" min="1" placeholder="Enter price" required>
+                    </div>
+                    <div class="product-field">
+                        <label for="new-stock">Stock Quantity</label>
+                        <input id="new-stock" type="number" min="0" placeholder="Enter stock" required>
+                    </div>
+                    <div class="product-field full">
+                        <label for="new-image">Product Image URL</label>
+                        <input id="new-image" type="url" placeholder="Paste online image URL">
+                    </div>
+                    <div class="product-field full">
+                        <label for="new-description">Description</label>
+                        <textarea id="new-description" placeholder="Write product description"></textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-button">Save Product</button>
+                    <a href="manage-products.html" class="cancel-button">Cancel</a>
+                </div>
+            </form>
+            <p class="product-note">Demo form: this layout accepts product details, but saving them permanently to the website requires a database or a connected backend.</p>
+        </section>
+
+        <!-- EDIT SAREE -->
+        <section class="product-edit-section">
+            <div class="admin-form-panel" id="edit-saree">
+                <h2>Edit Royal Silk Saree</h2>
+                <p class="form-description">Edit the sample product information.</p>
+                <form action="#" method="get">
+                    <div class="product-form-grid">
+                        <div class="product-field"><label>Product Name</label><input type="text" value="Royal Silk Saree"></div>
+                        <div class="product-field"><label>Category</label><select><option selected>Sarees</option><option>Lehengas</option><option>Gowns</option><option>Kurtis</option></select></div>
+                        <div class="product-field"><label>Price (₹)</label><input type="number" value="4999"></div>
+                        <div class="product-field"><label>Stock</label><input type="number" value="12"></div>
+                    </div>
+                    <div class="form-actions"><button class="save-button" type="submit">Save Changes</button><a href="manage-products.html" class="cancel-button">Close</a></div>
+                </form>
+            </div>
+
+            <div class="admin-form-panel" id="edit-lehenga">
+                <h2>Edit Royal Bridal Lehenga</h2>
+                <p class="form-description">Edit the sample product information.</p>
+                <form action="#" method="get">
+                    <div class="product-form-grid">
+                        <div class="product-field"><label>Product Name</label><input type="text" value="Royal Bridal Lehenga"></div>
+                        <div class="product-field"><label>Category</label><select><option>Sarees</option><option selected>Lehengas</option><option>Gowns</option><option>Kurtis</option></select></div>
+                        <div class="product-field"><label>Price (₹)</label><input type="number" value="12999"></div>
+                        <div class="product-field"><label>Stock</label><input type="number" value="6"></div>
+                    </div>
+                    <div class="form-actions"><button class="save-button" type="submit">Save Changes</button><a href="manage-products.html" class="cancel-button">Close</a></div>
+                </form>
+            </div>
+
+            <div class="admin-form-panel" id="edit-gown">
+                <h2>Edit Elegant Evening Gown</h2>
+                <p class="form-description">Edit the sample product information.</p>
+                <form action="#" method="get">
+                    <div class="product-form-grid">
+                        <div class="product-field"><label>Product Name</label><input type="text" value="Elegant Evening Gown"></div>
+                        <div class="product-field"><label>Category</label><select><option>Sarees</option><option>Lehengas</option><option selected>Gowns</option><option>Kurtis</option></select></div>
+                        <div class="product-field"><label>Price (₹)</label><input type="number" value="7499"></div>
+                        <div class="product-field"><label>Stock</label><input type="number" value="8"></div>
+                    </div>
+                    <div class="form-actions"><button class="save-button" type="submit">Save Changes</button><a href="manage-products.html" class="cancel-button">Close</a></div>
+                </form>
+            </div>
+
+            <div class="admin-form-panel" id="edit-kurti">
+                <h2>Edit White Chikankari Kurti</h2>
+                <p class="form-description">Edit the sample product information.</p>
+                <form action="#" method="get">
+                    <div class="product-form-grid">
+                        <div class="product-field"><label>Product Name</label><input type="text" value="White Chikankari Kurti"></div>
+                        <div class="product-field"><label>Category</label><select><option>Sarees</option><option>Lehengas</option><option>Gowns</option><option selected>Kurtis</option></select></div>
+                        <div class="product-field"><label>Price (₹)</label><input type="number" value="2499"></div>
+                        <div class="product-field"><label>Stock</label><input type="number" value="25"></div>
+                    </div>
+                    <div class="form-actions"><button class="save-button" type="submit">Save Changes</button><a href="manage-products.html" class="cancel-button">Close</a></div>
+                </form>
+            </div>
+        </section>
+
+    </div>
+</main>
+    <script src="app.js"></script>
+</body>
+</html>

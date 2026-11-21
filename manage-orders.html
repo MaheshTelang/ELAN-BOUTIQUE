@@ -1,0 +1,300 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage Orders | ÉLAN BOUTIQUE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<style>
+.orders-page{display:grid;gap:24px}
+.order-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.order-stat{background:white;padding:22px;border-radius:16px;box-shadow:0 8px 25px #4b24350d}
+.order-stat span{font-size:13px;color:#766f73}
+.order-stat h2{font:700 29px "Playfair Display",serif;color:#762f4f;margin-top:9px}
+.order-table-panel{background:white;padding:25px;border-radius:18px;box-shadow:0 8px 25px #4b24350d}
+.order-toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:22px}
+.order-toolbar h2{font:600 25px "Playfair Display",serif}
+.order-toolbar p{font-size:13px;color:#766f73;margin-top:5px}
+.order-toolbar select{padding:11px 14px;border:1px solid #eadbdd;border-radius:10px;background:#fffdfc;font:14px "DM Sans",sans-serif}
+.order-table-wrap{overflow-x:auto}
+.order-table{width:100%;border-collapse:collapse;min-width:800px}
+.order-table th{text-align:left;padding:15px 12px;background:#fff8f8;color:#766f73;font-size:12px;text-transform:uppercase;letter-spacing:.6px}
+.order-table td{padding:17px 12px;border-bottom:1px solid #f1e8e9;font-size:13px;vertical-align:middle}
+.order-table td strong{display:block;font-size:14px;color:#282127;margin-bottom:4px}
+.order-table td small{color:#766f73}
+.status-pill{display:inline-block;padding:7px 12px;border-radius:20px;font-size:11px;font-weight:700;background:#f3d9df;color:#762f4f}
+.status-processing{background:#fff0d9;color:#956018}
+.status-shipped{background:#e4edff;color:#365d9c}
+.status-delivered{background:#e2f3e9;color:#287348}
+.status-cancelled{background:#fce5e5;color:#a33c3c}
+.order-action{display:inline-block;padding:9px 14px;border-radius:22px;background:#f3d9df;color:#762f4f;text-decoration:none;font-size:12px;font-weight:700;white-space:nowrap}
+.order-action:hover{background:#762f4f;color:white}
+.order-details{background:white;padding:27px;border-radius:18px;box-shadow:0 8px 25px #4b24350d;scroll-margin-top:25px}
+.order-details h2{font:600 26px "Playfair Display",serif;margin-bottom:20px}
+.order-details dl{display:grid;grid-template-columns:150px 1fr;gap:14px;font-size:14px}
+.order-details dt{font-weight:700}
+.order-details dd{color:#766f73}
+.order-details .detail-note{background:#fff8f8;padding:17px;border-radius:12px;margin:20px 0;color:#766f73;font-size:13px;line-height:1.7}
+.order-update{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.order-update select{padding:12px;border:1px solid #eadbdd;border-radius:10px}
+.order-update button{background:#762f4f;color:white;border:0;padding:12px 20px;border-radius:25px;font-weight:700;cursor:pointer}
+.order-update a{background:#f3d9df;color:#762f4f;padding:12px 20px;border-radius:25px;text-decoration:none;font-weight:700;font-size:13px}
+.demo-note{color:#766f73;font-size:13px;line-height:1.7}
+@media(max-width:900px){.order-stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.order-stats{grid-template-columns:1fr 1fr}.order-stat{padding:16px}.order-stat h2{font-size:24px}.order-table-panel,.order-details{padding:17px}.order-details dl{grid-template-columns:1fr;gap:5px}.order-details dd{margin-bottom:9px}}
+</style>
+</head>
+
+<body class="admin-layout">
+
+<aside class="admin-sidebar">
+    <a href="index.html" class="brand-logo admin-side-logo">
+        <span class="brand-name">ÉLAN</span>
+        <span class="brand-subtitle">BOUTIQUE</span>
+    </a>
+
+    <nav class="admin-nav">
+        <a href="admin-dashboard.html"><span>⌂</span>Dashboard</a>
+        <a href="manage-products.html"><span>▣</span>Products</a>
+        <a href="manage-orders.html" class="active"><span>▤</span>Orders</a>
+        <a href="manage-customers.html"><span>♙</span>Customers</a>
+        <a href="manage-gallery.html"><span>▧</span>Gallery</a>
+        <a href="manage-messages.html"><span>✉</span>Messages</a>
+    </nav>
+
+    <a href="index.html" class="admin-logout">← View Website</a>
+</aside>
+
+<main class="admin-main">
+
+    <div class="admin-topbar">
+        <div>
+            <p class="eyebrow">SALES MANAGEMENT</p>
+            <h1>Manage Orders</h1>
+        </div>
+    </div>
+
+    <div class="orders-page">
+
+        <!-- ORDER STATISTICS -->
+        <section class="order-stats">
+            <div class="order-stat">
+                <span>Total Orders</span>
+                <h2>128</h2>
+            </div>
+            <div class="order-stat">
+                <span>Pending Orders</span>
+                <h2>18</h2>
+            </div>
+            <div class="order-stat">
+                <span>Shipped Orders</span>
+                <h2>24</h2>
+            </div>
+            <div class="order-stat">
+                <span>Delivered Orders</span>
+                <h2>86</h2>
+            </div>
+        </section>
+
+        <!-- ORDER TABLE -->
+        <section class="order-table-panel">
+
+            <div class="order-toolbar">
+                <div>
+                    <h2>Recent Orders</h2>
+                    <p>View and manage customer purchases.</p>
+                </div>
+
+                <select aria-label="Filter orders">
+                    <option>All Orders</option>
+                    <option>Pending</option>
+                    <option>Processing</option>
+                    <option>Shipped</option>
+                    <option>Delivered</option>
+                    <option>Cancelled</option>
+                </select>
+            </div>
+
+            <div class="order-table-wrap">
+                <table class="order-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Payment</th>
+                            <th>Order Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><strong>#EL1025</strong></td>
+                            <td><strong>Ananya Rao</strong><small>ananya@email.com</small></td>
+                            <td>Royal Bridal Lehenga</td>
+                            <td>20 Nov 2026</td>
+                            <td>₹12,999</td>
+                            <td><span class="status-pill status-delivered">Paid</span></td>
+                            <td><span class="status-pill status-processing">Processing</span></td>
+                            <td><a href="#order-1025" class="order-action">View</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>#EL1024</strong></td>
+                            <td><strong>Priya Sharma</strong><small>priya@email.com</small></td>
+                            <td>Royal Silk Saree</td>
+                            <td>19 Nov 2026</td>
+                            <td>₹4,999</td>
+                            <td><span class="status-pill status-delivered">Paid</span></td>
+                            <td><span class="status-pill status-shipped">Shipped</span></td>
+                            <td><a href="#order-1024" class="order-action">View</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>#EL1023</strong></td>
+                            <td><strong>Meera Patel</strong><small>meera@email.com</small></td>
+                            <td>White Chikankari Kurti</td>
+                            <td>18 Nov 2026</td>
+                            <td>₹2,499</td>
+                            <td><span class="status-pill status-processing">Pending</span></td>
+                            <td><span class="status-pill">Pending</span></td>
+                            <td><a href="#order-1023" class="order-action">View</a></td>
+                        </tr>
+
+                        <tr>
+                            <td><strong>#EL1022</strong></td>
+                            <td><strong>Riya Shah</strong><small>riya@email.com</small></td>
+                            <td>Elegant Evening Gown</td>
+                            <td>17 Nov 2026</td>
+                            <td>₹7,499</td>
+                            <td><span class="status-pill status-delivered">Paid</span></td>
+                            <td><span class="status-pill status-delivered">Delivered</span></td>
+                            <td><a href="#order-1022" class="order-action">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ORDER 1025 -->
+        <section class="order-details" id="order-1025">
+            <h2>Order Details – #EL1025</h2>
+            <dl>
+                <dt>Customer</dt><dd>Ananya Rao</dd>
+                <dt>Email</dt><dd>ananya@email.com</dd>
+                <dt>Product</dt><dd>Royal Bridal Lehenga</dd>
+                <dt>Quantity</dt><dd>1</dd>
+                <dt>Amount</dt><dd>₹12,999</dd>
+                <dt>Payment</dt><dd>Paid</dd>
+                <dt>Order Date</dt><dd>20 November 2026</dd>
+                <dt>Current Status</dt><dd>Processing</dd>
+            </dl>
+            <div class="detail-note">Customer order is being prepared. Check the product and size before dispatch.</div>
+            <div class="order-update">
+                <select aria-label="Select new order status">
+                    <option>Pending</option>
+                    <option selected>Processing</option>
+                    <option>Shipped</option>
+                    <option>Delivered</option>
+                    <option>Cancelled</option>
+                </select>
+                <button type="button">Update Status</button>
+                <a href="manage-orders.html">Close</a>
+            </div>
+        </section>
+
+        <!-- ORDER 1024 -->
+        <section class="order-details" id="order-1024">
+            <h2>Order Details – #EL1024</h2>
+            <dl>
+                <dt>Customer</dt><dd>Priya Sharma</dd>
+                <dt>Email</dt><dd>priya@email.com</dd>
+                <dt>Product</dt><dd>Royal Silk Saree</dd>
+                <dt>Quantity</dt><dd>1</dd>
+                <dt>Amount</dt><dd>₹4,999</dd>
+                <dt>Payment</dt><dd>Paid</dd>
+                <dt>Order Date</dt><dd>19 November 2026</dd>
+                <dt>Current Status</dt><dd>Shipped</dd>
+            </dl>
+            <div class="detail-note">The product has been dispatched to the customer.</div>
+            <div class="order-update">
+                <select aria-label="Select new order status">
+                    <option>Pending</option>
+                    <option>Processing</option>
+                    <option selected>Shipped</option>
+                    <option>Delivered</option>
+                    <option>Cancelled</option>
+                </select>
+                <button type="button">Update Status</button>
+                <a href="manage-orders.html">Close</a>
+            </div>
+        </section>
+
+        <!-- ORDER 1023 -->
+        <section class="order-details" id="order-1023">
+            <h2>Order Details – #EL1023</h2>
+            <dl>
+                <dt>Customer</dt><dd>Meera Patel</dd>
+                <dt>Email</dt><dd>meera@email.com</dd>
+                <dt>Product</dt><dd>White Chikankari Kurti</dd>
+                <dt>Quantity</dt><dd>1</dd>
+                <dt>Amount</dt><dd>₹2,499</dd>
+                <dt>Payment</dt><dd>Pending</dd>
+                <dt>Order Date</dt><dd>18 November 2026</dd>
+                <dt>Current Status</dt><dd>Pending</dd>
+            </dl>
+            <div class="detail-note">Payment and order confirmation are awaiting completion.</div>
+            <div class="order-update">
+                <select aria-label="Select new order status">
+                    <option selected>Pending</option>
+                    <option>Processing</option>
+                    <option>Shipped</option>
+                    <option>Delivered</option>
+                    <option>Cancelled</option>
+                </select>
+                <button type="button">Update Status</button>
+                <a href="manage-orders.html">Close</a>
+            </div>
+        </section>
+
+        <!-- ORDER 1022 -->
+        <section class="order-details" id="order-1022">
+            <h2>Order Details – #EL1022</h2>
+            <dl>
+                <dt>Customer</dt><dd>Riya Shah</dd>
+                <dt>Email</dt><dd>riya@email.com</dd>
+                <dt>Product</dt><dd>Elegant Evening Gown</dd>
+                <dt>Quantity</dt><dd>1</dd>
+                <dt>Amount</dt><dd>₹7,499</dd>
+                <dt>Payment</dt><dd>Paid</dd>
+                <dt>Order Date</dt><dd>17 November 2026</dd>
+                <dt>Current Status</dt><dd>Delivered</dd>
+            </dl>
+            <div class="detail-note">This order has been successfully delivered.</div>
+            <div class="order-update">
+                <select aria-label="Select new order status">
+                    <option>Pending</option>
+                    <option>Processing</option>
+                    <option>Shipped</option>
+                    <option selected>Delivered</option>
+                    <option>Cancelled</option>
+                </select>
+                <button type="button">Update Status</button>
+                <a href="manage-orders.html">Close</a>
+            </div>
+        </section>
+
+        <p class="demo-note">Note: Orders and customers shown here are sample project data. Status controls are visual demonstrations and do not update a database or save changes permanently.</p>
+
+    </div>
+</main>
+    <script src="app.js"></script>
+</body>
+</html>
